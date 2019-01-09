@@ -1,0 +1,51 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: rootProject.ext.otherLibrary.dir, include: [rootProject.ext.otherLibrary.include])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api rootProject.ext.otherLibrary.V7Library
+    api rootProject.ext.otherLibrary.constraint_layout
+    testImplementation rootProject.ext.otherLibrary.junit
+    androidTestImplementation rootProject.ext.otherLibrary.runner
+    androidTestImplementation rootProject.ext.otherLibrary.espresso_core
+
+    /**
+     * 网络服务等
+     */
+    //retrofit2
+    api rootProject.ext.otherLibrary.retrofit
+    //retrofit2_rxjava
+    api rootProject.ext.otherLibrary.retrofit2_rxjava
+    //gson
+    api rootProject.ext.otherLibrary.converter_gson
+    //rxjava
+//    api rootProject.ext.otherLibrary.rxJava
+    //rxAndroid
+    api rootProject.ext.otherLibrary.rxAndroid
+    //okhttp
+    api rootProject.ext.otherLibrary.okHttp
+    if (!rootProject.ext.isDebug) {
+        api project(":myfirstmodule")
+        api project(":baseutils")
+    }
+
+}

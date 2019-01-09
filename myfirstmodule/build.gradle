@@ -1,0 +1,77 @@
+if (rootProject.ext.isDebug) {
+    apply plugin: 'com.android.application'
+} else {
+    apply plugin: 'com.android.library'
+}
+apply plugin: 'kotlin-android'
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+//        applicationId "com.test.myfirstmodule"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        /**
+         * 阿里路由框架
+         */
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [AROUTER_MODULE_NAME: project.getName()]
+                includeCompileClasspath = true
+            }
+        }
+
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            if (rootProject.ext.isDebug) {
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+            }
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    api fileTree(dir: rootProject.ext.otherLibrary.dir, include: [rootProject.ext.otherLibrary.include])
+    api "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    api rootProject.ext.otherLibrary.V7Library
+    api rootProject.ext.otherLibrary.constraint_layout
+    testImplementation rootProject.ext.otherLibrary.junit
+    androidTestImplementation rootProject.ext.otherLibrary.runner
+    androidTestImplementation rootProject.ext.otherLibrary.espresso_core
+
+    api rootProject.ext.otherLibrary.rxjava
+
+    /**
+     * 阿里路由框架
+     */
+    api (rootProject.ext.otherLibrary.arouter_api) {
+        exclude group: 'com.android.support'
+    }
+    annotationProcessor (rootProject.ext.otherLibrary.arouter_compiler) {
+        exclude group: 'com.android.support'
+    }
+}
+repositories {
+    mavenCentral()
+}

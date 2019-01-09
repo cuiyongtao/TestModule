@@ -1,0 +1,91 @@
+ext {
+    /**
+     * 是否是调试模式
+     */
+    isDebug = false
+    /**
+     * 编译SDK版本
+     */
+    compileSdkVersion = 28
+
+    /**
+     * 最新支持版本
+     */
+    minSdkVersion = 15
+    /**
+     * 目标SDK版本
+     */
+    targetSdkVersion = 28
+    /**
+     * 版本号
+     */
+    versionCode = 1
+    /**
+     * 版本信息
+     */
+    versionName = "1.0"
+
+    /**
+     * rxjava version
+     */
+
+    rxjavaVersion = "2.2.5"
+
+    /**
+     * V7Library version
+     */
+
+    V7LibraryVersion = "1.0.0"
+    /**
+     * constraint-layout version
+     */
+
+    constraint_layoutVersion = "1.1.2"
+    /**
+     * junit version
+     */
+
+    junitVersion = "4.12"
+    /**
+     * runner verison
+     */
+    runnerVersion = "1.1.0"
+    /**
+     * espresso_core version
+     */
+    espresso_coreVersion = "3.1.0"
+    /**
+     * ARouter version
+     */
+    arouter_apiVersion = "1.4.1"
+    arouter_compilerVersion = "1.2.2"
+
+    /**
+     * Retrofit2，RxJava,OkHttp3等
+     */
+    retrofitVersion = "2.5.0"
+    retrofit2_rxjavaVersion = "2.5.0"
+    converter_gsonVersion = "2.5.0"
+    rxAndroidVersion = "1.2.0"
+    okHttpVersion = "3.12.0"
+
+    otherLibrary =
+            [
+                    'dir'              : 'libs',
+                    'include'          : '*.jar',
+                    'rxjava'           : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+                    'V7Library'        : "androidx.appcompat:appcompat:$V7LibraryVersion",
+                    'constraint_layout': "androidx.constraintlayout:constraintlayout:$constraint_layoutVersion",
+                    'junit'            : "junit:junit:$junitVersion",
+                    'runner'           : "androidx.test:runner:$runnerVersion",
+                    'espresso_core'    : "androidx.test.espresso:espresso-core:$espresso_coreVersion",
+                    'arouter_api'      : "com.alibaba:arouter-api:$arouter_apiVersion",
+                    'arouter_compiler' : "com.alibaba:arouter-compiler:$arouter_compilerVersion",
+                    'retrofit'         : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+                    'retrofit2_rxjava' : "com.squareup.retrofit2:adapter-rxjava:$retrofit2_rxjavaVersion",
+                    'converter_gson'   : "com.squareup.retrofit2:converter-gson:$converter_gsonVersion",
+                    'rxAndroid'        : "io.reactivex:rxandroid:$rxAndroidVersion",
+                    'okHttp'           : "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            ]
+
+}

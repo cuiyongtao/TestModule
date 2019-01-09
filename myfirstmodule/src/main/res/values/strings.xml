@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MyFirstModule</string>
+    <string name="moduleTest">测试测试2</string>
+</resources>
